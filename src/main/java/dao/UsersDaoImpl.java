@@ -13,6 +13,8 @@ public class UsersDaoImpl implements UsersDao{
 	Connection connection = null;
 	PreparedStatement stmt = null;
 	PasswordHashing pHash = new PasswordHashing();
+	
+	//Remember the CRUD.
 
 	@Override
 	public List<Ticket> getUserTickets(Integer userid) {
@@ -89,6 +91,22 @@ public class UsersDaoImpl implements UsersDao{
 		}
 		
 	}
-	
+
+	public boolean checkEmployment(int empID) {
+		try {
+			connection = DAOUtility.getConnection();
+			String sql = "SELECT * FROM employees WHERE employee_id = ?";
+			stmt = connection.prepareStatement(sql);
+			stmt.setInt(1, empID);
+			
+			ResultSet rs = stmt.executeQuery();
+			
+			return rs.next();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+			return false;
+		
+	}
 	
 }
