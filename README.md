@@ -6,7 +6,7 @@ This App is an Employee Reimbursement System. It is intended to provide users wi
 
 ## How to Use
 
-Info coming soon...
+Info coming soon....
 
 ## Created with
 
