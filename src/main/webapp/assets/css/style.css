@@ -1,2 +1,53 @@
-\
+body {
+  background-color: #072083;
+  color: #f85b1a;
+}
 
+#regWrapper {
+  margin-top: 8rem;
+  padding: 3rem;
+  background-color: #072083;
+}
+
+#navName {
+  color: white;
+  text-align: left;
+}
+.close {
+  background-color: orange;
+  border: none;
+  border-radius: 50%;
+  color: red;
+  text-align: center;
+  font-weight: bolder;
+}
+.dropdown-item:hover {
+  background-color: orange;
+}
+[aria-current] {
+  font-weight: bold;
+  text-decoration: underline;
+  text-decoration-color: #f85b1a;
+  text-decoration-thickness: 0.3em;
+}
+#logout {
+  border-radius: 50%;
+  background-color: orange;
+  color: red;
+  font-weight: bold;
+}
+nav {
+  background-color: #121314;
+}
+.modal-content {
+  background-color: #121314;
+}
+
+.dropdown-item {
+  color: #f85b1a;
+}
+
+#passReqs {
+  width: 18rem;
+  background-color: #121314;
+}
