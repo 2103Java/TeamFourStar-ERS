@@ -4,6 +4,8 @@ import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.apache.log4j.Logger;
+
 import models.Ticket;
 import models.User;
 import utilities.DAOUtility;
@@ -13,11 +15,14 @@ public class UsersDaoImpl implements UsersDao{
 	Connection connection = null;
 	PreparedStatement stmt = null;
 	PasswordHashing pHash = new PasswordHashing();
+	final static Logger loggy = Logger.getLogger(UsersDaoImpl.class);
 	
 	//Remember the CRUD.
 
 	@Override
 	public List<Ticket> getUserTickets(Integer userid) {
+		loggy.info("DATABASE OPERATION for GET TICKETS for USER ID: " + userid);
+		
 		List<Ticket> tickets = new ArrayList<Ticket>();
 		try {
 			connection = DAOUtility.getConnection();
@@ -38,6 +43,8 @@ public class UsersDaoImpl implements UsersDao{
 			return tickets;
 		}
 		catch(SQLException e) {
+        	loggy.warn("FAILURE in getUserTickets method in UsersDaoImpl.");
+
 			e.printStackTrace();
 		}
 		return null;
@@ -46,6 +53,7 @@ public class UsersDaoImpl implements UsersDao{
 
 	@Override
 	public User userLogin(String username, String password) {
+		loggy.info("ATTEMPTING LOGIN FOR: " + username);
 		User user;
 		try{
 			String pass = null;
@@ -66,6 +74,8 @@ public class UsersDaoImpl implements UsersDao{
 				}
 			}
 		}catch(SQLException e) {
+        	loggy.warn("FAILURE in userLogin method in UsersDaoImpl.");
+
 			e.printStackTrace();
 		}
 		return null;
@@ -73,6 +83,8 @@ public class UsersDaoImpl implements UsersDao{
 
 	@Override
 	public void registerUser(String username, String password, Integer empID) {
+    	loggy.info("ATTEMPTING REGISTRATION OF USER: " + username);
+
 		String salt = pHash.makeSalt();
 		String hashedPass = pHash.encryptPassword(salt, password);
 		
@@ -86,6 +98,8 @@ public class UsersDaoImpl implements UsersDao{
 			stmt.setInt(4, empID);
 			stmt.executeUpdate();
 		} catch (SQLException e) {
+        	loggy.warn("FAILURE in registerUser method in UsersDaoImpl.");
+
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
@@ -93,6 +107,8 @@ public class UsersDaoImpl implements UsersDao{
 	}
 
 	public boolean checkEmployment(int empID) {
+    	loggy.info("ATTEMPTING employment check for employee ID: " + empID);
+
 		try {
 			connection = DAOUtility.getConnection();
 			String sql = "SELECT * FROM employees WHERE employee_id = ?";
@@ -103,6 +119,8 @@ public class UsersDaoImpl implements UsersDao{
 			
 			return rs.next();
 		} catch (Exception e) {
+        	loggy.warn("FAILURE in checkEmployment method in UsersDaoImpl.");
+
 			e.printStackTrace();
 		}
 			return false;
