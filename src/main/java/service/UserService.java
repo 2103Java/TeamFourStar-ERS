@@ -9,11 +9,9 @@ import models.User;
 
 public class UserService {
 	
-	private UsersDao uDao;
+	private UsersDao uDao = new UsersDaoImpl();
 	
-	public UserService(UsersDao uDao) {
-		this.uDao = uDao;
-	}
+	public UserService() {}
 	
 	public User userLogin(String username, String password) {
 		User u = uDao.userLogin(username, password);

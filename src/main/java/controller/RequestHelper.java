@@ -50,6 +50,24 @@ public class RequestHelper {
 
                 break;
             case "/TeamFourStar-ERS/ers/ticket_form":
+            	loggy.info("Ticket form request recieved.");
+            	String method = req.getMethod();
+            	switch (method) {
+            	//Register a new ticket?
+            	case "GET" :
+            		ticketController.getTicket(req, res);
+            		break;
+            	
+            	case "POST" :
+            		ticketController.postTicket(req, res);
+            	break;
+            	
+            	
+            	default:
+            		
+            		break;
+            	
+            	}
 
                 break;
             case "/TeamFourStar-ERS/ers/submissions":

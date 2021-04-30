@@ -8,14 +8,16 @@ public class Ticket {
 	private String description;
 	private double amount;
 	
-	public Ticket(int ticketNum, int userID) {
+	public Ticket(int userID) {
 		super();
-		this.ticketNum = ticketNum;
 		this.userID = userID;
 	}
 	
 	public int getTicketNum() {
 		return ticketNum;
+	}
+	public void setTicketNum(int ticketNum) {
+		this.ticketNum = ticketNum;
 	}
 	public int getUserID() {
 		return userID;
