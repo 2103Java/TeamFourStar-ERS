@@ -1,17 +1,18 @@
 body {
-  background-color: #072083;
-  color: #f85b1a;
+  background-color: #33353a;
+  color: white;
 }
 
 #regWrapper {
   margin-top: 8rem;
   padding: 3rem;
-  background-color: #072083;
+  background-color: #33353a;
 }
 
 #navName {
   color: white;
   text-align: left;
+  font-weight: bolder;
 }
 .close {
   background-color: orange;
@@ -31,16 +32,15 @@ body {
   text-decoration-thickness: 0.3em;
 }
 #logout {
-  border-radius: 50%;
-  background-color: orange;
-  color: red;
   font-weight: bold;
 }
 nav {
-  background-color: #121314;
+  background-color: #072083;
 }
+
 .modal-content {
-  background-color: #121314;
+  background-color: #3a3d42;
+  color: black;
 }
 
 .dropdown-item {
@@ -49,5 +49,5 @@ nav {
 
 #passReqs {
   width: 18rem;
-  background-color: #121314;
+  background-color: #4e4848;
 }
