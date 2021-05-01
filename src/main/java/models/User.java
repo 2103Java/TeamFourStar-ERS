@@ -5,6 +5,7 @@ public class User {
 	private Integer userID;
 	private String username;
 	private Integer employeeID;
+	private Boolean isAdmin;
 	
 	
 	public Integer getUserID() {
@@ -25,6 +26,12 @@ public class User {
 	}
 	public void setEmployeeID(Integer employeeID) {
 		this.employeeID = employeeID;
+	}
+	public Boolean getIsAdmin() {
+		return isAdmin;
+	}
+	public void setIsAdmin(Boolean isAdmin) {
+		this.isAdmin = isAdmin;
 	}
 	
 }
