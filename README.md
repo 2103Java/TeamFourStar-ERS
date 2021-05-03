@@ -4,9 +4,9 @@
 
 This App is an Employee Reimbursement System. It is intended to provide users with a way to manage the process of reimbursing employees for expenses incurred while on company time.
 
-## How to Use
+## Visit the Site
 
-Info coming soon.
+[Click Here](http://ers.crabdance.com:9000/)
 
 ## Created with
 
