@@ -30,6 +30,7 @@ let user;
 function renderTable() {
     cUser();
     document.getElementById("logout").addEventListener('click',logout);
+
     let xhttp = new XMLHttpRequest();
     xhttp.onreadystatechange = function () {
         if (this.readyState == 4 && this.status == 200) {
@@ -91,7 +92,12 @@ function addRows(result) {
                   <td>${tStatus}</td>
                    <td>${tApproval}</td>
                  </tr>`
-
+            if(tID==3) {
+                document.getElementById('modalImg').setAttribute(src, './assets/images/fakeReceipt.jpeg')
+            }
+            if(tID==5){
+                ocument.getElementById('modalImg').setAttribute(src, './assets/images/Receipt.jpeg')
+            }
         });
         let trList = table.getElementsByTagName("tr");
         for (let index = 0; index < trList.length; index++) {
@@ -114,11 +120,11 @@ function cUser() {
             // console.log(xhttp.response)
             if (!xhttp.responseText) {
                 alert("You are not currently logged in!")
-
+                (window.location='index.html').reload()
             } else {
 
                 user = JSON.parse(xhttp.responseText);
-
+                document.getElementById("welcomeMessage").innerText="Welcome "+user.username;
                 console.log(user);
             }
         }

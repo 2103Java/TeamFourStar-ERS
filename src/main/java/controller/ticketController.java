@@ -57,7 +57,7 @@ public class ticketController {
 	}
 
     public static void postTicket(HttpServletRequest req, HttpServletResponse res) {
-    	Integer userID = Integer.parseInt(req.getParameter("userid"));
+    	int userID = Integer.parseInt(req.getParameter("userid"));
     	Ticket ti = new Ticket(userID);
     	
     	ti.setDescription(req.getParameter("description"));

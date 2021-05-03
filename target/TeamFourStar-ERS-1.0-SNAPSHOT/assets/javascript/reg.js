@@ -54,6 +54,8 @@ function register(e) {
 
                 alert("You are Not an Employee with us. We are unable to process financial reimbursement for you!")
 
+            }else if (this.status==406){
+                alert("Invalid Employee ID")
             }
 
         }

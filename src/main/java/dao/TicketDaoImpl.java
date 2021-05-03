@@ -24,7 +24,7 @@ public class TicketDaoImpl implements TicketDao {
 			String sql = "INSERT INTO tickets (related_user, is_open, is_approved, description, amount) VALUES (?, ?, ?, ?, ?)";
 			stmt = connection.prepareStatement(sql);
 			stmt.setInt(1, ticket.getUserID());
-			stmt.setBoolean(2, ticket.isOpenStatus());
+			stmt.setBoolean(2, true);
 			stmt.setBoolean(3, ticket.isApprovalStatus());
 			stmt.setString(4, ticket.getDescription());
 			stmt.setDouble(5, ticket.getAmount());

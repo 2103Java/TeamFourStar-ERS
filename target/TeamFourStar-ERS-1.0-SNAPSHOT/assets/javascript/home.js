@@ -30,6 +30,7 @@ let user;
 function renderTable() {
     cUser();
     document.getElementById("logout").addEventListener('click',logout);
+
     let xhttp = new XMLHttpRequest();
     xhttp.onreadystatechange = function () {
         if (this.readyState == 4 && this.status == 200) {
@@ -114,11 +115,11 @@ function cUser() {
             // console.log(xhttp.response)
             if (!xhttp.responseText) {
                 alert("You are not currently logged in!")
-
+                (window.location='index.html').reload()
             } else {
 
                 user = JSON.parse(xhttp.responseText);
-
+                document.getElementById("welcomeMessage").innerText="Welcome "+user.username;
                 console.log(user);
             }
         }

@@ -45,8 +45,9 @@ public class userController {
     public static void postUser(HttpServletRequest req, HttpServletResponse res) {
     	String uname = req.getParameter("username");
     	String upass = req.getParameter("password");
-    	Integer empID = Integer.parseInt(req.getParameter("employeeid"));
-    	
+    	try {
+			int empID = Integer.parseInt(req.getParameter("employeeid"));
+
     	//System.out.println(req);
     	System.out.println(uname + upass + empID);
 		boolean check = uServ.registerUser(uname, upass, empID);
@@ -66,6 +67,9 @@ public class userController {
 			res.setStatus(201);
 		} else{
     		res.setStatus(401);
+		}
+		} catch (Exception e){
+			res.setStatus(406);
 		}
 
 

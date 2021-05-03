@@ -1,5 +1,7 @@
 package controller;
 
+import javax.servlet.RequestDispatcher;
+import javax.servlet.ServletException;
 import javax.servlet.ServletRequest;
 import javax.servlet.ServletResponse;
 import javax.servlet.http.HttpServletRequest;
@@ -21,7 +23,7 @@ public class RequestHelper {
     final static Logger loggy = Logger.getLogger(RequestHelper.class);
 
 
-    public static void process(HttpServletRequest req, HttpServletResponse res) throws IOException {
+    public static void process(HttpServletRequest req, HttpServletResponse res) throws IOException, ServletException {
 
 
         System.out.println(req.getRequestURI());
@@ -42,6 +44,8 @@ public class RequestHelper {
                     loggy.info("POST login request received.");
                     // more thought here... we need to handle
                     userController.getUser(req, res);
+
+
 
                 } else {
                     loggy.info("INVALID request method received.");
@@ -83,6 +87,7 @@ public class RequestHelper {
             case "/ers/registration":{
                 if(method.equals("POST")){
                     loggy.info("Registration request submitted: Verifying User");
+
                     userController.postUser(req,res);
                 } else{
                     loggy.warn("Invalid Method");
@@ -94,10 +99,7 @@ public class RequestHelper {
                 loggy.info("Ticket form request received.");
 
                 switch (method) {
-                    //Register a new ticket?
-                    case "GET":
-                        ticketController.getTicket(req, res);
-                        break;
+                    //Register a new ticket
 
                     case "POST":
                         ticketController.postTicket(req, res);
@@ -141,6 +143,10 @@ public class RequestHelper {
 
                 HttpSession currentUserSes = req.getSession(false);
                 currentUserSes.invalidate();
+                break;
+            case "/ers/home.html":
+                res.sendRedirect("/home");
+
                 break;
 
             default:
