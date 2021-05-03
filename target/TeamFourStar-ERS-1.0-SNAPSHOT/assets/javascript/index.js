@@ -44,7 +44,7 @@ function login(e) {
                 alert("Invalid Email Address or Password")
 
             } else{
-                // window.location='home.html';
+                window.location='/home.html';
             }
 
         }

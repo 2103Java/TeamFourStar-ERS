@@ -26,10 +26,12 @@ function isEmail(email) {
 window.onload = renderTable;
 
 let user;
+let modalImg;
 
 function renderTable() {
     cUser();
     document.getElementById("logout").addEventListener('click',logout);
+    modalImg = document.getElementById('modalImg');
 
     let xhttp = new XMLHttpRequest();
     xhttp.onreadystatechange = function () {
@@ -92,12 +94,8 @@ function addRows(result) {
                   <td>${tStatus}</td>
                    <td>${tApproval}</td>
                  </tr>`
-            if(tID==3) {
-                document.getElementById('modalImg').setAttribute(src, './assets/images/fakeReceipt.jpeg')
-            }
-            if(tID==5){
-                ocument.getElementById('modalImg').setAttribute(src, './assets/images/Receipt.jpeg')
-            }
+
+
         });
         let trList = table.getElementsByTagName("tr");
         for (let index = 0; index < trList.length; index++) {
@@ -146,6 +144,7 @@ function toggleDetails(ticket) {
         let ticketDesc = document.getElementById('ticketDesc');
         ticketDesc.innerText = ticket.description;
 
+
         if (user.isAdmin) {
             let footer = document.getElementById('adminBro');
             footer.innerHTML = `<div class="modal-footer">
@@ -156,6 +155,14 @@ function toggleDetails(ticket) {
         }
 
         var myModal = new bootstrap.Modal(document.getElementById('ticketModal'));
+        if(ticket.ticketNum==3){
+            document.getElementById('modalImg').setAttribute('src','./assets/images/fakeReceipt.jpeg')
+        }else
+        if(ticket.ticketNum==5){
+            document.getElementById('modalImg').setAttribute('src','./assets/images/Receipt.jpeg')
+        } else{
+            document.getElementById('modalImg').setAttribute('src','./assets/images/default-img.gif')
+        }
         myModal.show();
     }
 }
