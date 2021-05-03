@@ -84,7 +84,7 @@ public class UsersDaoImpl implements UsersDao{
 	}
 
 	@Override
-	public void registerUser(String username, String password, Integer empID) {
+	public boolean registerUser (String username, String password, Integer empID) {
 		System.out.println("ATTEMPTING TO REGISTER USER.");
     	loggy.info("ATTEMPTING REGISTRATION OF USER: " + username);
 
@@ -100,14 +100,17 @@ public class UsersDaoImpl implements UsersDao{
 			stmt.setString(3, salt);
 			stmt.setInt(4, empID);
 			stmt.setInt(5, empID);
-			stmt.executeUpdate();
+			if(stmt.executeUpdate()!=0){
+				return true;
+			};
+
 		} catch (SQLException e) {
         	loggy.warn("FAILURE in registerUser method in UsersDaoImpl.");
 
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		
+		return false;
 	}
 
 	public boolean checkEmployment(int empID) {
@@ -121,7 +124,11 @@ public class UsersDaoImpl implements UsersDao{
 			
 			ResultSet rs = stmt.executeQuery();
 			
-			return rs.next();
+			while(rs.next()){
+				if (rs.getString("first_name")!=null){
+					return true;
+				}
+			};
 		} catch (Exception e) {
         	loggy.warn("FAILURE in checkEmployment method in UsersDaoImpl.");
 

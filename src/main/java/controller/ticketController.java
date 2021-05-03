@@ -1,6 +1,7 @@
 package controller;
 
 import java.io.IOException;
+import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -34,7 +35,27 @@ public class ticketController {
 			e.printStackTrace();
 		}
     }
-    
+	public static List<Ticket> getAllTickets(HttpServletRequest req, HttpServletResponse res) {
+		res.setContentType("json/application");
+
+
+
+		List<Ticket> ticks = tServ.getAllTickets();
+
+		ObjectMapper om = new ObjectMapper();
+
+		try {
+			res.getWriter().write(om.writeValueAsString(ticks));
+		} catch (JsonProcessingException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return ticks;
+	}
+
     public static void postTicket(HttpServletRequest req, HttpServletResponse res) {
     	Integer userID = Integer.parseInt(req.getParameter("userid"));
     	Ticket ti = new Ticket(userID);
@@ -44,4 +65,24 @@ public class ticketController {
     	
     	tServ.postTicket(ti);
     }
+
+	public static void closeTicket(HttpServletRequest req, HttpServletResponse res) {
+		res.setContentType("json/application");
+
+		int ticketNum = Integer.parseInt(req.getParameter("ticketnumber"));
+		boolean bool = Boolean.parseBoolean(req.getParameter("boolean"));
+		tServ.closeTicket(ticketNum, bool);
+
+	}
+
+	public static void approveTicket(HttpServletRequest req, HttpServletResponse res) {
+		res.setContentType("json/application");
+
+		int ticketNum = Integer.parseInt(req.getParameter("ticketnumber"));
+		boolean bool = Boolean.valueOf(req.getParameter("action").equals("approve"));
+
+		tServ.approveTicket(ticketNum, bool);
+
+	}
+
 }

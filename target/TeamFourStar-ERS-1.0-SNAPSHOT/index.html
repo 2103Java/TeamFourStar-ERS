@@ -18,7 +18,7 @@
     <title>Ers-Login</title>
   </head>
   <body>
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <nav class="navbar navbar-expand-lg navbar-dark">
       <div class="container-fluid">
         <a class="navbar-brand" href="./index.html">
           <!--home reference-->
@@ -40,55 +40,41 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
           <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-            <li class="nav-item">
-              <a class="nav-link" href="./home.html">Home</a>
-              <!--This should take you to the login page if no current user 
-                else should take you to users homepage-->
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="./register.html">reg...</a>
-            </li>
+
+
           </ul>
-          <form class="d-flex">
-            <input
-              class="form-control me-2"
-              type="search"
-              placeholder="Search"
-              aria-label="Search"
-            />
-            <button class="btn btn-outline-success" type="submit">
-              Search
-            </button>
-          </form>
         </div>
       </div>
     </nav>
+
+    <div class="p-5 rounded-lg m-3" id="jumbotron">
+     <h1 class="d-flex justify-content-center"> Welcome to the ERS</h1>
+    </div>
     <div class="container">
-      <form class="px-4 py-3">
-        <div class="mb-3">
-          <label for="exampleDropdownFormEmail1" class="form-label"
-            >Email address</label
-          >
+      <form class="px-4 py-3 needs-validation" novalidate>
+        <label for="username" class="form-label"
+          >Email</label
+        >
+        <div class="input-group has-validation">
           <input
             type="email"
             class="form-control"
-            id="exampleDropdownFormEmail1"
-            placeholder="email@example.com"
+            id="username"
+            aria-describedby="inputGroupPrepend"
+            required
           />
+          <div class="invalid-feedback">Please enter a valid email.</div>
         </div>
-        <div class="mb-3">
-          <label for="exampleDropdownFormPassword1" class="form-label"
-            >Password</label
-          >
-          <input
-            type="password"
-            class="form-control"
-            id="exampleDropdownFormPassword1"
-            placeholder="Password"
-          />
+        <div class="mt-3 mb-3">
+          <label for="password" class="form-label">Password</label>
+          <input type="password" class="form-control" id="password" required />
+          <div class="invalid-feedback">
+            Password does not meet the requirements
+          </div>
+          <div class="valid-feedback">Password field is not empty</div>
         </div>
 
-        <button type="submit" class="btn btn-primary">Sign in</button>
+        <button type="button" class="btn btn-primary" id="signIn">login or Sign in</button>
       </form>
       <div class="dropdown-divider"></div>
 
@@ -102,6 +88,6 @@
       integrity="sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf"
       crossorigin="anonymous"
     ></script>
-    <script src="./assets/javascript/app.js"></script>
+    <script src="./assets/javascript/index.js"></script>
   </body>
 </html>

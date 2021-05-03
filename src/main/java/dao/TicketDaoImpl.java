@@ -42,15 +42,16 @@ public class TicketDaoImpl implements TicketDao {
 
 
 	@Override
-	public void approveTicket(int ticketNum) {
+	public void approveTicket(int ticketNum, boolean bool) {
 		
 		try {
 			connection = DAOUtility.getConnection();
-			String sql = "UPDATE tickets SET is_approved = true WHERE ticket_id = ?";
+			String sql = "UPDATE tickets SET is_approved = ? WHERE ticket_id = ?";
 			stmt = connection.prepareStatement(sql);
-			stmt.setInt(1, ticketNum);
+			stmt.setBoolean(1, bool);
+			stmt.setInt(2, ticketNum);
 			
-			stmt.executeQuery();
+			stmt.executeUpdate();
 			
 		}catch(SQLException e) {
 			e.printStackTrace();
@@ -59,14 +60,15 @@ public class TicketDaoImpl implements TicketDao {
 
 
 	@Override
-	public void closeTicket(int ticketNum) {
+	public void closeTicket(int ticketNum, boolean bool) {
 		try {
 			connection = DAOUtility.getConnection();
-			String sql = "UPDATE tickets SET is_open = true WHERE ticket_id = ?";
+			String sql = "UPDATE tickets SET is_open = ? WHERE ticket_id = ?";
 			stmt = connection.prepareStatement(sql);
-			stmt.setInt(1, ticketNum);
+			stmt.setBoolean(1, bool);
+			stmt.setInt(2, ticketNum);
 			
-			stmt.executeQuery();
+			stmt.executeUpdate();
 			
 		}catch(SQLException e) {
 			e.printStackTrace();

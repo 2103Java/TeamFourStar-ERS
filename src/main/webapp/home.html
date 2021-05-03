@@ -1,158 +1,135 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<head>
+    <meta charset="UTF-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <link
-      href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css"
-      rel="stylesheet"
-      integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6"
-      crossorigin="anonymous"
+            href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css"
+            rel="stylesheet"
+            integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6"
+            crossorigin="anonymous"
     />
     <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
-      integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w=="
-      crossorigin="anonymous"
+            rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+            integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w=="
+            crossorigin="anonymous"
     />
-    <link rel="stylesheet" href="./assets/css/style.css" />
+    <link rel="stylesheet" href="./assets/css/style.css"/>
     <title>Ers-Home</title>
-  </head>
-  <body>
-    <nav class="navbar navbar-expand-lg navbar-dark">
-      <div class="container-fluid">
+</head>
+<body>
+<nav class="navbar navbar-expand-lg navbar-dark">
+    <div class="container-fluid">
         <a class="navbar-brand" href="./index.html">
-          <!--home reference-->
-          <img src="./assets/images/4star.png" alt="" width="30" height="24" />
+            <!--home reference-->
+            <img src="./assets/images/4star.png" alt="" width="30" height="24"/>
         </a>
 
         <p class="navbar-nav mb-2 mb-lg-0" id="navName">TeamFourStar</p>
 
         <button
-          class="navbar-toggler"
-          type="button"
-          data-bs-toggle="collapse"
-          data-bs-target="#navbarTogglerDemo02"
-          aria-controls="navbarTogglerDemo02"
-          aria-expanded="false"
-          aria-label="Toggle navigation"
+                class="navbar-toggler"
+                type="button"
+                data-bs-toggle="collapse"
+                data-bs-target="#navbarTogglerDemo02"
+                aria-controls="navbarTogglerDemo02"
+                aria-expanded="false"
+                aria-label="Toggle navigation"
         >
-          <span class="navbar-toggler-icon"></span>
+            <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
-          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-            <li class="nav-item">
-              <a class="nav-link active" aria-current="page" href="./home.html"
-                >Home</a
-              >
-              <!--This should take you to the login page if no current user 
-                  else should take you to users homepage-->
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="./register.html">reg...</a>
-            </li>
-          </ul>
-          <!--This button will need to implement a function that clears the current user 
-          (may try to do this on index.html page load)-->
-          <button class="btn btn-secondary" id="logout" href="./index.html">
-            Logout
-          </button>
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="./home.html"
+                    >Home</a
+                    >
+                    <!--This should take you to the login page if no current user
+                        else should take you to users homepage-->
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="./register.html">reg...</a>
+                </li>
+            </ul>
+            <!--This button will need to implement a function that clears the current user
+            (may try to do this on index.html page load)-->
+            <button type="button" class=" btn btn-secondary" id="logout" >
+                Logout
+            </button>
         </div>
-      </div>
-    </nav>
+    </div>
+</nav>
 
-    <div class="container" id="homeWrapper">
-      <h1 class="d-flex justify-content-end" id="welcomeMessage">
+<div class="container" id="homeWrapper">
+    <h1 class="d-flex justify-content-end" id="welcomeMessage">
         WelcomeUser
-      </h1>
-      <!-- First modal dialog -->
-      <div
-        class="modal fade"
-        id="modal"
-        aria-hidden="true"
-        aria-labelledby="..."
-        tabindex="-1"
-      >
-        <div class="modal-dialog modal-dialog-centered">
-          <div class="modal-content">
-            1st Modal
-            <div class="modal-footer">
-              <!-- Toogle to second dialog -->
-              <button
-                class="btn btn-primary"
-                data-bs-target="#modal2"
-                data-bs-toggle="modal"
-                data-bs-dismiss="modal"
-              >
-                Open #modal2
-              </button>
+    </h1>
+
+    <!-- User Modal -->
+    <div class="modal" id="ticketModal" tabindex="-1">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="ticketID"></h5>
+                    <button
+                            type="button"
+                            class="close"
+                            data-bs-dismiss="modal"
+                            aria-label="Close"
+                    >
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="container-fluid">
+                        <div class="row">
+                            <div class="col-md-4">
+                                <img class="img-thumbnail" alt="default" src="./assets/images/default-img.gif">
+                            </div>
+                            <div class="col-md-8" id="ticketDesc"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer" id="adminBro">
+
+                </div>
             </div>
-          </div>
         </div>
-      </div>
-      <!-- Second modal dialog -->
-      <div
-        class="modal fade"
-        id="modal2"
-        aria-hidden="true"
-        aria-labelledby="..."
-        tabindex="-1"
-      >
-        <div class="modal-dialog modal-dialog-centered">
-          <div class="modal-content">
-            2nd Modal
-            <div class="modal-footer">
-              <!-- Toogle to first dialog, `data-bs-dismiss` attribute can be omitted - clicking on link will close dialog anyway -->
-              <a
-                class="btn btn-primary"
-                href="#modal"
-                data-bs-toggle="modal"
-                role="button"
-                >Open #modal</a
-              >
-            </div>
-          </div>
-        </div>
-      </div>
-      <!-- Open first dialog -->
-      <a
-        class="btn btn-secondary"
-        data-bs-toggle="modal"
-        href="#modal"
-        role="button"
-        >Open #modal</a
-      >
-      <!--End Modal-->
-      <table class="table table-hover table-dark table-striped">
+    </div>
+    <!--End Modal-->
+
+
+    <table class="table table-hover table-dark table-striped">
         <thead>
-          <tr>
+        <tr>
             <th scope="col">Ticket #</th>
             <th scope="col">Amount</th>
             <th scope="col">Status</th>
             <th scope="col">Approval</th>
-          </tr>
+        </tr>
         </thead>
-        <tbody>
-          <tr>
+        <tbody id="ticketTable">
+        <tr>
             <th scope="row">1</th>
             <td>$5.00</td>
             <td>Open</td>
             <td>Pending Approval</td>
-          </tr>
+        </tr>
         </tbody>
-      </table>
-    </div>
-    <script
-      src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.1/dist/umd/popper.min.js"
-      integrity="sha384-SR1sx49pcuLnqZUnnPwx6FCym0wLsk5JZuNx2bPPENzswTNFaQU1RDvt3wT4gWFG"
-      crossorigin="anonymous"
-    ></script>
-    <script
-      src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.min.js"
-      integrity="sha384-j0CNLUeiqtyaRmlzUHCPZ+Gy5fQu0dQ6eZ/xAww941Ai1SxSY+0EQqNXNE6DZiVc"
-      crossorigin="anonymous"
-    ></script>
-    <script src="./assets/javascript/app.js"></script>
-  </body>
+    </table>
+</div>
+<script
+        src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.1/dist/umd/popper.min.js"
+        integrity="sha384-SR1sx49pcuLnqZUnnPwx6FCym0wLsk5JZuNx2bPPENzswTNFaQU1RDvt3wT4gWFG"
+        crossorigin="anonymous"
+></script>
+<script
+        src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.min.js"
+        integrity="sha384-j0CNLUeiqtyaRmlzUHCPZ+Gy5fQu0dQ6eZ/xAww941Ai1SxSY+0EQqNXNE6DZiVc"
+        crossorigin="anonymous"
+></script>
+<script src="assets/javascript/home.js"></script>
+</body>
 </html>

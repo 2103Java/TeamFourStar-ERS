@@ -11,8 +11,8 @@ public class loginController {
     
     
     public String login(){
-    	loggy.info("Login request recieved by controller.");
-    	
+    	loggy.info("Login request received by controller.");
+
         return "/login";
     }
 }

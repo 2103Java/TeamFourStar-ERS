@@ -62,6 +62,7 @@
     </nav>
     <div class="container m-6" id="regWrapper">
       <h1>Registration Page</h1>
+      <h1>css?</h1>
       <form method="POST" class="row g-3 needs-validation" novalidate>
         <div class="col-md-4">
           <label for="firstName" class="form-label">First name</label>
@@ -137,8 +138,9 @@
                       class="close"
                       data-bs-dismiss="modal"
                       aria-label="Close"
+                      data-bs-toggle="tooltip" data-bs-placement="bottom" title="Close"
                     >
-                      <span aria-hidden="true">&times;</span>
+                      <i class="fas fa-star"></i>
                     </button>
                   </div>
                   <div class="modal-body">
@@ -166,7 +168,7 @@
           </div>
         </div>
         <div class="col-md-12 text-center">
-          <button class="btn btn-primary mb-md-3" type="submit">
+          <button class="btn btn-primary mb-md-3" type="submit" id="regSubmit">
             Submit form
           </button>
         </div>
@@ -178,6 +180,6 @@
       integrity="sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf"
       crossorigin="anonymous"
     ></script>
-    <script src="./assets/javascript/app.js"></script>
+    <script src="assets/javascript/reg.js"></script>
   </body>
 </html>

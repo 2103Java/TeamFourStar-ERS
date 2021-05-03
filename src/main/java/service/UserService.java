@@ -15,6 +15,7 @@ public class UserService {
 	
 	public User userLogin(String username, String password) {
 		User u = uDao.userLogin(username, password);
+
 		return u;
 	}
 	

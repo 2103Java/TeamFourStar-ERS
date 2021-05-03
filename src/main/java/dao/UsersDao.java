@@ -9,6 +9,6 @@ public interface UsersDao {
 	
 	List<Ticket> getUserTickets(Integer userID);
 	User userLogin(String username, String password);
-	void registerUser(String username, String password, Integer empID);
+	boolean registerUser(String username, String password, Integer empID);
 	boolean checkEmployment(int empID);
 }
